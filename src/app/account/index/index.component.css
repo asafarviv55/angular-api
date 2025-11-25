@@ -1,0 +1,32 @@
+.container {
+  padding: 20px;
+}
+
+.loading {
+  text-align: center;
+  padding: 20px;
+  font-size: 18px;
+  color: #666;
+}
+
+.alert {
+  margin-bottom: 20px;
+}
+
+.btn {
+  margin-right: 5px;
+}
+
+.badge-success {
+  background-color: #28a745;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+.badge-secondary {
+  background-color: #6c757d;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+}

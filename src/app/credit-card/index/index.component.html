@@ -1,0 +1,53 @@
+<div class="container">
+  <h2>Credit Card Management</h2>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="isLoading" class="loading">
+    Loading credit cards...
+  </div>
+
+  <div *ngIf="!isLoading">
+    <a routerLink="/credit-cards/apply" class="btn btn-primary mb-3">Apply for New Card</a>
+
+    <div class="card-grid">
+      <div *ngFor="let card of creditCards" class="credit-card" [class.blocked]="card.status === 'BLOCKED'">
+        <div class="card-header">
+          <span class="card-type">{{ card.cardType }}</span>
+          <span [class]="'badge badge-' + card.status.toLowerCase()">{{ card.status }}</span>
+        </div>
+        <div class="card-number">{{ maskCardNumber(card.cardNumber) }}</div>
+        <div class="card-holder">{{ card.cardHolderName }}</div>
+        <div class="card-details">
+          <div class="detail">
+            <span class="label">Credit Limit:</span>
+            <span class="value">{{ card.creditLimit | currency:'USD' }}</span>
+          </div>
+          <div class="detail">
+            <span class="label">Available:</span>
+            <span class="value">{{ card.availableCredit | currency:'USD' }}</span>
+          </div>
+          <div class="detail">
+            <span class="label">Current Balance:</span>
+            <span class="value">{{ card.currentBalance | currency:'USD' }}</span>
+          </div>
+          <div class="detail">
+            <span class="label">Minimum Payment:</span>
+            <span class="value">{{ card.minimumPayment | currency:'USD' }}</span>
+          </div>
+          <div class="detail">
+            <span class="label">Rewards Points:</span>
+            <span class="value">{{ card.rewardsPoints }}</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a routerLink="/credit-cards/{{ card.id }}" class="btn btn-info btn-sm">View Details</a>
+          <button *ngIf="card.status === 'ACTIVE'" (click)="blockCard(card.id)" class="btn btn-danger btn-sm">Block Card</button>
+          <button *ngIf="card.status === 'BLOCKED'" (click)="activateCard(card.id)" class="btn btn-success btn-sm">Activate</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

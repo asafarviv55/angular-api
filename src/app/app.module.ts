@@ -8,8 +8,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { UserModule } from './user/user.module';
-
-
+import { AccountModule } from './account/account.module';
+import { TransactionModule } from './transaction/transaction.module';
+import { LoanModule } from './loan/loan.module';
+import { CreditCardModule } from './credit-card/credit-card.module';
+import { BranchModule } from './branch/branch.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +22,11 @@ import { UserModule } from './user/user.module';
     BrowserModule,
     AppRoutingModule,
     UserModule,
+    AccountModule,
+    TransactionModule,
+    LoanModule,
+    CreditCardModule,
+    BranchModule,
     HttpClientModule
   ],
   providers: [],

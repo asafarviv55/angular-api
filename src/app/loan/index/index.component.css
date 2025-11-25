@@ -1,0 +1,41 @@
+.container {
+  padding: 20px;
+}
+
+.loading {
+  text-align: center;
+  padding: 20px;
+  font-size: 18px;
+  color: #666;
+}
+
+.badge {
+  padding: 5px 10px;
+  border-radius: 4px;
+  color: white;
+}
+
+.badge-success {
+  background-color: #28a745;
+}
+
+.badge-warning {
+  background-color: #ffc107;
+  color: black;
+}
+
+.badge-info {
+  background-color: #17a2b8;
+}
+
+.badge-danger {
+  background-color: #dc3545;
+}
+
+.badge-secondary {
+  background-color: #6c757d;
+}
+
+.btn {
+  margin-right: 5px;
+}

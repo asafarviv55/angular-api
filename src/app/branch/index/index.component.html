@@ -1,0 +1,60 @@
+<div class="container">
+  <h2>Branch Locator</h2>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+
+  <div class="search-panel">
+    <div class="search-inputs">
+      <input type="text" [(ngModel)]="searchCity" placeholder="City" class="form-control" />
+      <input type="text" [(ngModel)]="searchState" placeholder="State" class="form-control" />
+      <button (click)="searchBranches()" class="btn btn-primary">Search</button>
+      <button (click)="findNearby()" class="btn btn-success">Find Nearby</button>
+      <button (click)="clearSearch()" class="btn btn-secondary">Clear</button>
+    </div>
+  </div>
+
+  <div *ngIf="isLoading" class="loading">
+    Loading branches...
+  </div>
+
+  <div *ngIf="!isLoading" class="branch-list">
+    <div *ngFor="let branch of branches" class="branch-card">
+      <div class="branch-header">
+        <h3>{{ branch.branchName }}</h3>
+        <span [class]="'badge badge-' + branch.status.toLowerCase()">{{ branch.status }}</span>
+      </div>
+      <div class="branch-details">
+        <div class="detail-row">
+          <strong>Branch Code:</strong> {{ branch.branchCode }}
+        </div>
+        <div class="detail-row">
+          <strong>Address:</strong> {{ branch.address }}, {{ branch.city }}, {{ branch.state }} {{ branch.zipCode }}
+        </div>
+        <div class="detail-row">
+          <strong>Phone:</strong> {{ branch.phone }}
+        </div>
+        <div class="detail-row">
+          <strong>Email:</strong> {{ branch.email }}
+        </div>
+        <div class="detail-row">
+          <strong>Manager:</strong> {{ branch.managerName }}
+        </div>
+        <div class="detail-row">
+          <strong>Hours:</strong> {{ branch.openingHours }} - {{ branch.closingHours }}
+        </div>
+        <div class="detail-row">
+          <strong>Services:</strong>
+          <div class="services">
+            <span *ngFor="let service of branch.services" class="service-badge">{{ service }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="branch-actions">
+        <a routerLink="/branches/{{ branch.id }}" class="btn btn-info btn-sm">View Details</a>
+        <button class="btn btn-primary btn-sm">Get Directions</button>
+      </div>
+    </div>
+  </div>
+</div>
